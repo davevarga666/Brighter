@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">AutoBrightness</string>
+    <string name="togglebutton">ToggleButton</string>
+    <string name="doneButton">Button</string>
+</resources>
