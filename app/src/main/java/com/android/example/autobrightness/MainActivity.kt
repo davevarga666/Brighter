@@ -46,24 +46,38 @@ class MainActivity : AppCompatActivity() {
             Timber.plant(Timber.DebugTree())
         }
         setContentView(R.layout.activity_main)
-        var sharedPref: SharedPreference = SharedPreference(this)
-        var resOne =
-            ContextCompat.checkSelfPermission(this, Manifest.permission.PACKAGE_USAGE_STATS)
-        var resTwo = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_SETTINGS)
-        if (resOne == PackageManager.PERMISSION_GRANTED && resTwo == PackageManager.PERMISSION_GRANTED) {
-            sharedPref.save("permsGranted", true)
-        }
-        if (sharedPref.getValueBoolean("permsGranted", false)) {
-            val writeIntent = Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS)
-            startActivity(writeIntent)
-            Timber.i("Write access granted")
-            val usageIntent = Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS)
-            startActivity(usageIntent)
-            Timber.i("Usage access granted")
-        }
+
+        //save for later
+
+//        var sharedPref: SharedPreference = SharedPreference(this)
+//        var resOne =
+//            ContextCompat.checkSelfPermission(this, Manifest.permission.PACKAGE_USAGE_STATS)
+
+//        var resTwo = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_SETTINGS)
+//        if (resOne == PackageManager.PERMISSION_GRANTED && resTwo == PackageManager.PERMISSION_GRANTED) {
+//            sharedPref.save("permsGranted", true)
+//        }
+//        if (sharedPref.getValueBoolean("permsGranted", false)) {
+//            val writeIntent = Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS)
+//            startActivity(writeIntent)
+//            Timber.i("Write access granted")
+//            val usageIntent = Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS)
+//            startActivity(usageIntent)
+//            Timber.i("Usage access granted")
+//        }
         //stopThis = letsSave.getValueBoolean("stopThis")
 
-
+        // RESTORE THIS IF PERMS NOT GRANTED!!!
+//        if (!(ContextCompat.checkSelfPermission(this, Manifest.permission.PACKAGE_USAGE_STATS) == PackageManager.PERMISSION_GRANTED &&
+//                    ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_SETTINGS) == PackageManager.PERMISSION_GRANTED))
+//            {
+//            val writeIntent = Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS)
+//            startActivity(writeIntent)
+//            Timber.i("Write access granted")
+//            val usageIntent = Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS)
+//            startActivity(usageIntent)
+//            Timber.i("Usage access granted")
+//            }
         val start = findViewById(R.id.startButton) as Button
         val stop = findViewById(R.id.stopButton) as Button
         start.setOnClickListener {
